@@ -21,9 +21,29 @@ from schemas import (
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-# Define standard queries mapping to the 4 cognitive objectives:
-# A: Artifact Attach Test, B: Multi-Goal + Memory Carryover, C: Durable Memory Across Two Runs, D: Multi-Source Synthesis
-QUERIES = {
+STANDARD_QUERIES = {
+    "A": (
+        "Fetch https://en.wikipedia.org/wiki/Claude_Shannon and tell me his "
+        "birth date, death date, and three key contributions to information theory."
+    ),
+    "B": (
+        "Retrieve 3 popular activities in Tokyo, find the Saturday weather forecast for Tokyo, "
+        "and determine the most appropriate activity (indoor or outdoor) assuming rainy conditions."
+    ),
+    "C1": (
+        "Remember that Mom's birthday is on 15 May 2026. Create a calendar reminder file named "
+        "birthday_reminder.txt in the sandbox."
+    ),
+    "C2": (
+        "When is Mom's birthday? Check your records and tell me."
+    ),
+    "D": (
+        "Search for asyncio best practices, fetch the top 3 resulting URLs, "
+        "synthesise their common advice, and output a clean numbered list of recommendations."
+    )
+}
+
+SPACE_QUERIES = {
     "A": (
         "Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its "
         "launch date, its current estimated distance from Earth (in AU or km), and describe the three key "
@@ -270,8 +290,14 @@ def main():
     parser = argparse.ArgumentParser(description="Session 6 Cognitive Agent Orchestration Script")
     parser.add_argument(
         "--query",
-        choices=["A", "B", "C1", "C2", "D"],
-        help="Select a predefined query (A: Shannon Wikipedia, B: Tokyo, C1: Mom birthday run 1, C2: Mom birthday run 2, D: Asyncio)"
+        choices=["A", "B", "C", "D"],
+        help="Select a predefined query (A: Claude Shannon / Voyager 1, B: Tokyo / SpaceX Mars, C: Mom's Birthday / ISS CRS-32, D: Asyncio / Space Telescopes)"
+    )
+    parser.add_argument(
+        "--theme",
+        choices=["standard", "space"],
+        default="space",
+        help="Select query theme: 'space' (default premium) or 'standard' (instructor assignment)"
     )
     parser.add_argument(
         "--prompt",
@@ -296,7 +322,18 @@ def main():
     # Choose query text
     query_text = ""
     if args.query:
-        query_text = QUERIES[args.query]
+        if args.query == "C":
+            # Dynamically determine Run 1 (C1) vs Run 2 (C2)
+            m = Memory()
+            if args.theme == "space":
+                has_fact = any("crs-32" in f.content.lower() or "12 june" in f.content.lower() for f in m.store.facts)
+                query_text = SPACE_QUERIES["C2"] if has_fact else SPACE_QUERIES["C1"]
+            else:
+                has_fact = any("mom" in f.content.lower() or "15 may" in f.content.lower() for f in m.store.facts)
+                query_text = STANDARD_QUERIES["C2"] if has_fact else STANDARD_QUERIES["C1"]
+        else:
+            queries_dict = SPACE_QUERIES if args.theme == "space" else STANDARD_QUERIES
+            query_text = queries_dict[args.query]
     elif args.prompt:
         query_text = args.prompt
     else:

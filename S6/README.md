@@ -34,149 +34,213 @@ Ensure your environment variables are configured in `.env` (copied from root dir
 uv run --with crawl4ai python -m playwright install
 ```
 
-### 2. Predefined Space Exploration Queries
-Run the agent using the pre-configured high-fidelity Space queries:
+### 2. Predefined Target Queries & Themes
+The agent supports **two different query themes** via the `--theme` CLI flag, exposing exactly **4 queries (`A`, `B`, `C`, `D`)**:
+1. **`--theme space` (Default Premium)**: Runs our aerospace/space themed queries (Voyager 1, SpaceX Mars, ISS Cargo, Next-Gen Telescopes).
+2. **`--theme standard` (Instructor Assignment)**: Runs the original assignment queries (Claude Shannon, Tokyo activities, Mom's birthday, Asyncio).
 
+#### A. Running the Premium Space Exploration Theme (Default):
 ```bash
-# Query A: Voyager 1 Wikipedia Fetch & Artifact Intercept (converges in exactly 3 turns)
-uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query A --clear-memory
+# Query A: Voyager 1 Wikipedia Fetch & Artifact Intercept (exactly 3 turns)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query A --theme space --clear-memory
 
-# Query B: SpaceX Mars & Boca Chica Weather Conditional Routing (converges in 4 turns)
-uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query B --clear-memory
+# Query B: SpaceX Mars & Boca Chica Weather Simulation (4 turns)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query B --theme space --clear-memory
 
-# Query C1: ISS Cargo Run CRS-32 durable memory fact storage & file creation
-uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query C1 --clear-memory
+# Query C (Run 1 - Clear memory first): ISS Cargo Run CRS-32 fact recording & crs_schedule.txt creation
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query C --theme space --clear-memory
 
-# Query C2: Instant zero-tool durable memory fact retrieval (converges instantly in 1 turn!)
-uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query C2
+# Query C (Run 2 - Instant zero-tool durable memory fact retrieval in 1 turn!)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query C --theme space
 
-# Query D: Next-Gen Telescopes Multi-URL search & Synthesis (converges in 4-5 turns)
-uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query D --clear-memory
+# Query D: Next-Gen Space Telescopes comparison synthesis (4-5 turns)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query D --theme space --clear-memory
+```
+
+#### B. Running the Standard Instructor Assignment Queries:
+```bash
+# Query A: Claude Shannon Wikipedia Fetch & Artifact Intercept (exactly 3 turns)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query A --theme standard --clear-memory
+
+# Query B: Tokyo Activities & Weather Recommendation (4-5 turns)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query B --theme standard --clear-memory
+
+# Query C (Run 1 - Clear memory first): Mom's Birthday Fact Recording & Reminder File Creation
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query C --theme standard --clear-memory
+
+# Query C (Run 2 - Instant zero-tool durable memory retrieval in 1 turn!)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query C --theme standard
+
+# Query D: Asyncio Best Practices Multi-URL Fetch & Synthesis (4 turns)
+uv run --with pydantic --with httpx --with python-dotenv --with mcp --with ddgs --with crawl4ai --with tavily --with beautifulsoup4 python3 agent6.py --query D --theme standard --clear-memory
 ```
 
 ---
 
 ## 🏆 Terminal Execution Traces
 
-### Query A (Voyager 1 Status)
+### Query A (Claude Shannon Wikipedia Fetch)
 ```text
 ─── iter 1 ───
 [memory.read]   0 hits
-[perception]    [open] Fetch the content of the Wikipedia page for Voyager 1.
-                [open] Extract the launch date and current distance from Earth from the retrieved content.
-                [open] Identify and describe the three key components of the Golden Record.
-[decision]      TOOL_CALL: fetch_url({"url": "https://en.wikipedia.org/wiki/Voyager_1"})
-[action]        → [artifact art:78a4e650f85c4d3a, 275614 bytes] preview: ...
+[perception]    [open] Fetch the content of the Wikipedia page for Claude Shannon.
+                [open] Extract birth date, death date, and three key contributions to information theory from the fetched content.
+[decision]      TOOL_CALL: fetch_url({"url": "https://en.wikipedia.org/wiki/Claude_Shannon"})
+[05/29/26 21:58:52] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://en.wikipedia.org/wiki/Claude_Shannon                                                         | ✓ | ⏱: 1.57s
+[SCRAPE].. ◆ https://en.wikipedia.org/wiki/Claude_Shannon                                                         | ✓ | ⏱: 0.15s
+[COMPLETE] ● https://en.wikipedia.org/wiki/Claude_Shannon                                                         | ✓ | ⏱: 1.73s
+[action] Intercepted large output. Saved as art:bf429c50f5e63541 (261147 bytes)
+[action]        → [artifact art:bf429c50f5e63541, 261147 bytes] preview: ...
 
 ─── iter 2 ───
 [memory.read]   1 hits
-[attach] Safety net triggered: Attached ['art:78a4e650f85c4d3a'] to subgoal: "Extract the launch date and current distance from Earth from the retrieved content."
-[perception]    [done] Fetch the content of the Wikipedia page for Voyager 1.
-                [open] Extract the launch date and current distance from Earth from the retrieved content.
-                  attach=art:78a4e650f85c4d3a
-                [open] Identify and describe the three key components of the Golden Record.
-[attach]        art:78a4e650f85c4d3a (40040 bytes)
-[decision]      ANSWER: Voyager 1 was launched on September 5, 1977. As of March 2026, it is approximate...
+[attach] Safety net triggered: Attached ['art:bf429c50f5e63541'] to subgoal: "Extract birth date, death date, and three key contributions to information theory from the fetched content."
+[perception]    [done] Fetch the content of the Wikipedia page for Claude Shannon.
+                [open] Extract birth date, death date, and three key contributions to information theory from the fetched content.
+                  attach=art:bf429c50f5e63541
+[attach]        art:bf429c50f5e63541 (40040 bytes)
+[decision]      ANSWER: Claude Shannon was born on April 30, 1916, and passed away on February 24, 2001....
 
 ─── iter 3 ───
-[perception]    [done] Fetch the content of the Wikipedia page for Voyager 1.
-                [done] Extract the launch date and current distance from Earth from the retrieved content.
-                [done] Identify and describe the three key components of the Golden Record.
+[perception]    [done] Fetch the content of the Wikipedia page for Claude Shannon.
+                [done] Extract birth date, death date, and three key contributions to information theory from the fetched content.
 
-[done] all 3 goals satisfied
+[done] all 2 goals satisfied
 
-FINAL: Voyager 1 was launched on September 5, 1977. As of March 2026, it is approximately 172.59 AU (about 25.8 billion km) from Earth. The Golden Record carried on board is a phonograph record containing sounds and images selected to portray the diversity of life and culture on Earth. While the Wikipedia article provides a general overview, the three key components typically described for the Golden Record are: 1) Audio (including greetings in many languages, music, and natural sounds), 2) Images (encoded in analog form, including diagrams, photos of Earth, and scientific data), and 3) A cover with instructions for playback and a map of Earth's location.
+FINAL: Claude Shannon was born on April 30, 1916, and passed away on February 24, 2001. Three of his key contributions to information theory include: 1) The formalization of information entropy, which measures the uncertainty or information content of a source; 2) The introduction of the 'bit' as the fundamental unit of information; and 3) The development of the fundamental theorems for data compression (source coding) and reliable communication over noisy channels (channel coding).
 ```
 
-### Query B (SpaceX Mars Weather Simulation Routing)
+### Query B (Tokyo Weather & Activities Conditional Recommendation)
 ```text
+─── iter 1 ───
+[memory.read]   0 hits
+[perception]    [open] Retrieve 3 popular activities in Tokyo.
+                [open] Find the Saturday weather forecast for Tokyo.
+                [open] Determine the most appropriate activity based on the weather forecast.
+[decision]      TOOL_CALL: web_search({"query": "3 popular activities in Tokyo and weather forecast for Tokyo this Saturday", "max_results": 3})
+[action]        → {   "title": "Tokyo, Tokyo, Japan Weather Forecast | AccuWeather",   "url": "htt...
+
+─── iter 2 ───
+[memory.read]   1 hits
+[perception]    [open] Retrieve 3 popular activities in Tokyo.
+                [open] Find the Saturday weather forecast for Tokyo.
+                [open] Determine the most appropriate activity based on the weather forecast.
+[decision]      TOOL_CALL: web_search({"query": "3 popular activities in Tokyo and weather forecast for Tokyo this Saturday", "max_results": 3})
+[action]        → {   "title": "Tokyo, Japan Weather Forecast",   "url": "https://www.weather-fore...
+
+─── iter 3 ───
+[memory.read]   2 hits
+[perception]    [open] Retrieve 3 popular activities in Tokyo.
+                [open] Find the Saturday weather forecast for Tokyo.
+                [open] Determine the most appropriate activity based on the weather forecast.
+[decision]      TOOL_CALL: fetch_url({"url": "https://www.weather-forecast.com/locations/Tokyo-1/forecasts/latest"})
+[action]        → [artifact art:2c87947354f0da96, 52031 bytes] preview: ...
+
 ─── iter 4 ───
 [memory.read]   3 hits
-[perception]    [done] Retrieve the 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars.
-                [done] Search for the Saturday weather forecast for Boca Chica, Texas.
-                [open] Determine if the launch simulation should be conducted indoors or outdoors based on the weather forecast.
-[decision]      ANSWER: The 3 primary mission objectives for SpaceX's Starship orbital test flights are:...
+[perception]    [open] Retrieve 3 popular activities in Tokyo.
+                [open] Find the Saturday weather forecast for Tokyo.
+                [open] Determine the most appropriate activity based on the weather forecast.
+[decision]      ANSWER: Based on the current weather forecast for Tokyo, Saturday is expected to be rain...
 
 ─── iter 5 ───
-[perception]    [done] Retrieve the 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars.
-                [done] Search for the Saturday weather forecast for Boca Chica, Texas.
-                [done] Determine if the launch simulation should be conducted indoors or outdoors based on the weather forecast.
+[perception]    [done] Retrieve 3 popular activities in Tokyo.
+                [done] Find the Saturday weather forecast for Tokyo.
+                [done] Determine the most appropriate activity based on the weather forecast.
 
 [done] all 3 goals satisfied
 
-FINAL: The 3 primary mission objectives for SpaceX's Starship orbital test flights are: 1) Achieving orbital flight, 2) Conducting operational payload missions, and 3) Demonstrating propellant transfer. The weather forecast for Boca Chica, Texas, indicates potential for storms and high winds. Consequently, the launch simulation activity should be conducted indoors to ensure safety and mitigate risks associated with adverse weather conditions.
+FINAL: Based on the current weather forecast for Tokyo, Saturday is expected to be rainy. Three popular activities in Tokyo are: 1) Visiting the teamLab Borderless digital art museum (Indoor), 2) Exploring the Ghibli Museum (Indoor), and 3) Shopping in the Ginza district (Indoor/Covered). Given the rainy conditions, all three are excellent choices, but the teamLab Borderless digital art museum is the most highly recommended indoor activity for a rainy day in Tokyo.
 ```
 
-### Query C1 (Fact Recording)
+### Query C1 (Fact Recording & File Creation)
 ```text
-[memory.remember] classified and saved fact: "The next cargo supply mission to the International Space Station (CRS-32) is scheduled for launch on 12 June 2026."
-✅ Memory extracted fact: "The next cargo supply mission to the International Space Station (CRS-32) is scheduled for launch on 12 June 2026."
+[memory.remember] classified and saved fact: "Mom's birthday is on 15 May 2026"
+✅ Memory extracted fact: "Mom's birthday is on 15 May 2026"
 
 ─── iter 1 ───
 [memory.read]   1 hits
-[perception]    [open] Create a file named crs_schedule.txt containing the information that the CRS-32 mission is scheduled for launch on 12 June 2026.
-[decision]      TOOL_CALL: create_file({"path": "crs_schedule.txt", "content": "Mission: CRS-32\nLaunch Date: 12 June 2026"})
-[action]        → {   "ok": true,   "path": "crs_schedule.txt",   "size_bytes": 41 }
+[perception]    [open] Create a file named birthday_reminder.txt containing the text 'Mom's birthday is on 15 May 2026'.
+[decision]      TOOL_CALL: create_file({"path": "birthday_reminder.txt", "content": "Mom's birthday is on 15 May 2026"})
+[action]        → Error: MCP tool returned an error: Error executing tool create_file: File 'birthday_reminder.txt' already exists
+
+─── iter 2 ───
+[memory.read]   2 hits
+[perception]    [open] Verify the content of the existing birthday_reminder.txt file.
+                [open] Update the file content if necessary to ensure it contains 'Mom's birthday is on 15 May 2026'.
+[decision]      TOOL_CALL: read_file({"path": "birthday_reminder.txt"})
+[action]        → {   "path": "birthday_reminder.txt",   "size_bytes": 33,   "content": "Mom's bir...
+
+─── iter 3 ───
+[memory.read]   3 hits
+[perception]    [done] Verify the content of the existing birthday_reminder.txt file.
+                [done] Update the file content if necessary to ensure it contains 'Mom's birthday is on 15 May 2026'.
+[decision]      ANSWER: The file 'birthday_reminder.txt' has been successfully verified and contains the...
+
+─── iter 4 ───
+[perception]    [done] Verify the content of the existing birthday_reminder.txt file.
+                [done] Update the file content if necessary to ensure it contains 'Mom's birthday is on 15 May 2026'.
+
+[done] all 2 goals satisfied
+
+FINAL: The file 'birthday_reminder.txt' has been successfully verified and contains the correct information: 'Mom's birthday is on 15 May 2026.'
 ```
 
 ### Query C2 (Fact Retrieval in 1 Turn)
 ```text
 ─── iter 1 ───
 [memory.read]   1 hits
-[perception]    [done] Retrieve and report the scheduled launch date for the CRS-32 mission from memory.
-[decision]      ANSWER: The CRS-32 supply mission is scheduled to launch on 12 June 2026.
+[perception]    [open] Retrieve Mom's birthday from memory and inform the user.
+[decision]      ANSWER: Mom's birthday is on May 15, 2026.
 
 ─── iter 2 ───
-[perception]    [done] Retrieve and report the scheduled launch date for the CRS-32 mission from memory.
+[perception]    [done] Retrieve Mom's birthday from memory and inform the user.
 
 [done] all 1 goals satisfied
 
-FINAL: The CRS-32 supply mission is scheduled to launch on 12 June 2026.
+FINAL: Mom's birthday is on May 15, 2026.
 ```
 
-### Query D (Next-Gen Space Telescopes Comparison)
+### Query D (Asyncio Best Practices Comparison)
 ```text
+─── iter 1 ───
+[memory.read]   0 hits
+[perception]    [open] Search for asyncio best practices and retrieve the top 3 URLs.
+                [open] Synthesize the common advice from the retrieved URLs.
+                [open] Format the synthesized advice into a clean numbered list of recommendations.
+[decision]      TOOL_CALL: web_search({"query": "asyncio best practices", "max_results": 3})
+[action]        → {   "title": "Asyncio best practices - Async-SIG - Discussions on Python.org",  ...
+
+─── iter 2 ───
+[memory.read]   1 hits
+[perception]    [done] Search for asyncio best practices and retrieve the top 3 URLs.
+                [open] Synthesize the common advice from the retrieved URLs.
+                [open] Format the synthesized advice into a clean numbered list of recommendations.
+[decision]      TOOL_CALL: fetch_url({"url": "https://discuss.python.org/t/asyncio-best-practices/12576"})
+[action]        → [artifact art:097912d7bb5525ab, 6639 bytes] preview: ...
+
 ─── iter 3 ───
 [memory.read]   2 hits
-[perception]    [done] Search for next-generation space telescopes planned for the 2030s and identify their primary design documentation or URLs.
-                [open] Extract and synthesize information regarding primary scientific instruments, mirror sizes, and scientific goals for the identified telescopes.
-                [open] Generate a structured numbered comparison of the primary mirror sizes and scientific goals for the selected telescopes.
-[decision]      TOOL_CALL: fetch_url({"url": "https://en.wikipedia.org/wiki/Origins_Space_Telescope"})
-[action]        → [artifact art:a7cc568de882502e, 95658 bytes] preview: ...
+[attach] Safety net triggered: Attached ['art:097912d7bb5525ab'] to subgoal: "Synthesize the common advice from the retrieved URLs."
+[perception]    [done] Search for asyncio best practices and retrieve the top 3 URLs.
+                [open] Synthesize the common advice from the retrieved URLs.
+                  attach=art:097912d7bb5525ab
+                [open] Format the synthesized advice into a clean numbered list of recommendations.
+[attach]        art:097912d7bb5525ab (6639 bytes)
+[decision]      ANSWER: Based on the best practices for Python's asyncio, here are the key recommendatio...
 
 ─── iter 4 ───
-[memory.read]   3 hits
-[attach] Safety net triggered: Attached ['art:a7cc568de882502e'] to subgoal: "Generate a structured numbered comparison of the primary mirror sizes and scientific goals for the selected telescopes."
-[perception]    [done] Search for next-generation space telescopes planned for the 2030s and identify their primary design documentation or URLs.
-                [done] Extract and synthesize information regarding primary scientific instruments, mirror sizes, and scientific goals for the identified telescopes.
-                [open] Generate a structured numbered comparison of the primary mirror sizes and scientific goals for the selected telescopes.
-                  attach=art:a7cc568de882502e
-[attach]        art:a7cc568de882502e (40040 bytes)
-[decision]      ANSWER: ### Comparison of Next-Generation Space Telescope Concepts  Below is a compariso...
-
-─── iter 5 ───
-[perception]    [done] Search for next-generation space telescopes planned for the 2030s and identify their primary design documentation or URLs.
-                [done] Extract and synthesize information regarding primary scientific instruments, mirror sizes, and scientific goals for the identified telescopes.
-                [done] Generate a structured numbered comparison of the primary mirror sizes and scientific goals for the selected telescopes.
+[perception]    [done] Search for asyncio best practices and retrieve the top 3 URLs.
+                [done] Synthesize the common advice from the retrieved URLs.
+                [done] Format the synthesized advice into a clean numbered list of recommendations.
 
 [done] all 3 goals satisfied
 
-FINAL: ### Comparison of Next-Generation Space Telescope Concepts
+FINAL: Based on the best practices for Python's asyncio, here are the key recommendations:
        
-       Below is a comparison of three major mission concepts proposed for the 2030s/2040s era, based on their design studies.
-       
-       1. **Habitable Worlds Observatory (HWO)**
-          - **Primary Mirror Size:** Conceptually ~6–8 meters (designed to be the successor to JWST for direct imaging).
-          - **Scientific Goals:** To search for and characterize Earth-like exoplanets, detect biosignatures in their atmospheres, and conduct transformative general astrophysics.
-          - **Primary Instruments:** High-contrast coronagraphs for direct imaging, UV/Optical/Near-IR spectrographs.
-       
-       2. **Origins Space Telescope (OST)**
-          - **Primary Mirror Size:** 5.9 meters (Concept 2) to 9.1 meters (Concept 1).
-          - **Scientific Goals:** To study the history of star formation, the evolution of galaxies and black holes, the interstellar medium, and the delivery of water to habitable planets.
-          - **Primary Instruments:** Far-infrared imaging polarimeter, mid-infrared instrument for exoplanet transit spectroscopy, and versatile far-infrared spectrometers.
-       
-       3. **Lynx X-ray Observatory**
-          - **Primary Mirror Size:** Not defined by a single mirror diameter in the traditional sense; utilizes a high-resolution X-ray grazing-incidence mirror assembly (designed for 0.5 arcsecond angular resolution).
-          - **Scientific Goals:** To observe the high-energy universe, including the first supermassive black holes, the growth of structure in the early universe, and the feedback mechanisms between black holes and their host galaxies.
-          - **Primary Instruments:** High-definition X-ray imager, X-ray microcalorimeter spectrometer, and grating spectrometer.
+       1. **Ensure True Asynchrony**: Simply using `async/await` does not guarantee asynchronous execution. If you use blocking calls (like `time.sleep`), your code will run synchronously. You must use the `asyncio` library's non-blocking equivalents (e.g., `asyncio.sleep`) to allow the event loop to switch tasks.
+       2. **Avoid Long-Running Loops**: Functions containing long-running loops will block the event loop, causing performance degradation and lag. Instead, break these loops into smaller iterations and schedule them onto the event loop using methods like `loop.call_soon`.
+       3. **Utilize Tasks for Scheduling**: Use `asyncio.Task` to manage and track concurrent operations. Tasks allow the event loop to handle multiple coroutines efficiently, ensuring that your application remains responsive.
 ```
