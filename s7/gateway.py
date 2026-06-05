@@ -18,11 +18,19 @@ from pathlib import Path
 
 import httpx
 
+import os
+from dotenv import load_dotenv
+
+# Load local environment variables if present
+load_dotenv(Path(__file__).resolve().parent / ".env")
+
 GATEWAY_V7_DIR = Path(__file__).resolve().parent / "llm_gatewayV7"
 # Fallback to parents[2] if parent / "llm_gatewayV7" doesn't exist
 if not GATEWAY_V7_DIR.exists():
     GATEWAY_V7_DIR = Path(__file__).resolve().parents[2] / "llm_gatewayV7"
-GATEWAY_URL = "http://localhost:8107"
+
+GATEWAY_PORT = os.getenv("GATEWAY_V7_PORT", "8107")
+GATEWAY_URL = os.getenv("LLM_GATEWAY_V7_URL", f"http://localhost:{GATEWAY_PORT}")
 
 
 def _is_up() -> bool:
