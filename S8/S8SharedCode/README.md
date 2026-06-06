@@ -193,3 +193,394 @@ The multi-agent growing-graph orchestrator has been verified across all core sce
 - **Sandbox Output**: `333.4152759969378`
 - **Final Answer**: `"The sum of the square roots of the first 50 odd numbers is approximately 333.415."`
 
+########## Queries output ############
+pankaj@pankajs-MacBook-Air code % uv run python demo.py s7
+
+═════════════════════════════════════════════════════════════════
+                 Session 7 Core Showcase Examples
+═════════════════════════════════════════════════════════════════
+Select a Session 7 example to run under the S8 orchestrator:
+
+  1) SpaceX Mars Starship Launch Simulation
+     ↳ Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, sea...
+     ↳ Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+  2) Space Telescopes comparison (2030s plans)
+     ↳ Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, ...
+     ↳ Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+  3) Voyager 1 biography & distance
+     ↳ Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its lau...
+     ↳ Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+  4) ResNet Technique (Shortcut mapping)
+     ↳ Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradie...
+     ↳ Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+  5) DPO Reward Alignment (Implicit reward)
+     ↳ Query: How can language models be aligned with human feedback using implicit reward equations and binary co...
+     ↳ Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+
+  B) Quit
+
+Choice: 1
+
+═════════════════════════════════════════════════════════════════
+              SpaceX Mars Starship Launch Simulation
+═════════════════════════════════════════════════════════════════
+Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, search for the Saturday weather forecast for Boca Chica (Starbase, Texas), and determine if a launch simulation activity should be conducted indoors or outdoors assuming high wind or thunderstorm conditions are forecasted.
+
+Note: Memory was cleared to showcase live concurrent research branches.
+Executing: uv run python flow.py "Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, search for the Saturday weather forecast for Boca Chica (Starbase, Texas), and determine if a launch simulation activity should be conducted indoors or outdoors assuming high wind or thunderstorm conditions are forecasted."
+
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-dbe7ae0f  ─  query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, search for the Saturday weather forecast for Boca Chica (Starbase, Texas), and determine if a launch simulation activity should be conducted indoors or outdoors assuming high wind or thunderstorm conditions are forecasted.
+══════════════════════════════════════════════════════════════════════════════
+[n:1] planner            complete (4.7s)
+[06/06/26 09:10:52] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+                    INFO     HTTP Request: GET http://localhost:8108/v1/routers "HTTP/1.1 200 OK"                                                                                                                                _client.py:1025
+                    INFO     HTTP Request: POST http://localhost:8108/v1/embed "HTTP/1.1 200 OK"                                                                                                                                 _client.py:1025
+                    INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:10:53] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+                    INFO     response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=weather%20forecast%20Saturday%20Boca%20Chica%20Texas 200                                                     lib.rs:444
+[06/06/26 09:10:54] INFO     response: https://grokipedia.com/api/typeahead?query=weather+forecast+Saturday+Boca+Chica+Texas&limit=1 200                                                                                              lib.rs:444
+[06/06/26 09:10:55] INFO     response: https://www.startpage.com/ 200                                                                                                                                                                 lib.rs:444
+[06/06/26 09:10:56] INFO     response: https://www.startpage.com/sp/search 200                                                                                                                                                        lib.rs:444
+                    INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:10:57] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://www.localconditions.com/us/boca-chica/texas/weather/forecast/                                | ✓ | ⏱: 4.52s
+[SCRAPE].. ◆ https://www.localconditions.com/us/boca-chica/texas/weather/forecast/                                | ✓ | ⏱: 0.02s
+[COMPLETE] ● https://www.localconditions.com/us/boca-chica/texas/weather/forecast/                                | ✓ | ⏱: 4.55s
+[n:2] retriever          complete (8.6s)
+[n:3] researcher         complete (16.1s)
+[n:4] coder              complete (11.9s)
+[n:5] formatter          complete (4.0s)
+[n:6] sandbox_executor   complete (0.0s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: Regarding your request, here is the information gathered:
+
+1. SpaceX Starship Mission Objectives: While the knowledge base did not contain official documentation, the following primary objectives for Mars orbital test flights have been identified: demonstrating successful orbital insertion and controlled reentry, validating orbital refueling capabilities, and achieving a soft, precision landing of the Super Heavy booster and Starship on Mars.
+
+2. Saturday Weather Forecast for Boca Chica, Texas: The forecast for Saturday, June 6, 2026, calls for partly cloudy conditions with a high of 92°F and
+══════════════════════════════════════════════════════════════════════════════
+
+
+Press enter to return to the Session 7 submenu...
+
+
+═════════════════════════════════════════════════════════════════
+                 Session 7 Core Showcase Examples
+═════════════════════════════════════════════════════════════════
+Select a Session 7 example to run under the S8 orchestrator:
+
+  1) SpaceX Mars Starship Launch Simulation
+     ↳ Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, sea...
+     ↳ Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+  2) Space Telescopes comparison (2030s plans)
+     ↳ Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, ...
+     ↳ Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+  3) Voyager 1 biography & distance
+     ↳ Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its lau...
+     ↳ Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+  4) ResNet Technique (Shortcut mapping)
+     ↳ Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradie...
+     ↳ Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+  5) DPO Reward Alignment (Implicit reward)
+     ↳ Query: How can language models be aligned with human feedback using implicit reward equations and binary co...
+     ↳ Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+
+  B) Quit
+
+Choice: 2
+
+═════════════════════════════════════════════════════════════════
+            Space Telescopes comparison (2030s plans)
+═════════════════════════════════════════════════════════════════
+Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, or OST), fetch the top 3 detailed pages or URLs describing their designs, synthesise their primary scientific instruments, and output a beautifully structured numbered comparison of their primary mirror sizes and scientific goals.
+
+Note: Memory was cleared to showcase live concurrent research branches.
+Executing: uv run python flow.py "Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, or OST), fetch the top 3 detailed pages or URLs describing their designs, synthesise their primary scientific instruments, and output a beautifully structured numbered comparison of their primary mirror sizes and scientific goals."
+
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-af4a70b2  ─  query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, or OST), fetch the top 3 detailed pages or URLs describing their designs, synthesise their primary scientific instruments, and output a beautifully structured numbered comparison of their primary mirror sizes and scientific goals.
+══════════════════════════════════════════════════════════════════════════════
+[n:1] planner            complete (4.7s)
+[06/06/26 09:11:43] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[06/06/26 09:11:47] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[06/06/26 09:11:48] INFO     response: https://grokipedia.com/api/typeahead?query=HabEx+space+telescope+primary+mirror+size+and+scientific+goals&limit=1 200                                                                          lib.rs:444
+                    INFO     response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=HabEx%20space%20telescope%20primary%20mirror%20size%20and%20scientific%20goals 200                           lib.rs:444
+                    INFO     HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"                                                                                                                          _client.py:1025
+[06/06/26 09:11:48] INFO     Error in engine wikipedia: TimeoutException(TimeoutError('error sending request for url                                                                                                                 ddgs.py:436
+                             (https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=LUVOIR%20space%20telescope%20primary%20mirror%20size%20and%20scientific%20goals) > operation timed out'))
+                    INFO     Error in engine grokipedia: TimeoutException(TimeoutError('error sending request for url                                                                                                                ddgs.py:436
+                             (https://grokipedia.com/api/typeahead?query=LUVOIR+space+telescope+primary+mirror+size+and+scientific+goals&limit=1) > operation timed out'))
+[06/06/26 09:11:50] INFO     response: https://yandex.com/search/site/?text=LUVOIR+space+telescope+primary+mirror+size+and+scientific+goals&web=1&searchid=7493678 200                                                                lib.rs:444
+                    INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:11:51] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[06/06/26 09:11:53] INFO     Error in engine brave: TimeoutException(TimeoutError('error sending request for url (https://search.brave.com/search?q=HabEx+space+telescope+primary+mirror+size+and+scientific+goals&source=web) >     ddgs.py:436
+                             operation timed out'))
+[FETCH]... ↓ https://en.wikipedia.org/wiki/Large_Ultraviolet_Optical_Infrared_Surveyor                            | ✓ | ⏱: 1.38s
+[SCRAPE].. ◆ https://en.wikipedia.org/wiki/Large_Ultraviolet_Optical_Infrared_Surveyor                            | ✓ | ⏱: 0.06s
+[COMPLETE] ● https://en.wikipedia.org/wiki/Large_Ultraviolet_Optical_Infrared_Surveyor                            | ✓ | ⏱: 1.44s
+                    INFO     response: https://search.yahoo.com/search;_ylt=JsWGs8QJFnvxs7joGaMDsjRM;_ylu=Bf-uOZPhgfgPwcv4laFdGpEBMoLmvqZtRA1i51qUWMpUQpg?p=HabEx+space+telescope+primary+mirror+size+and+scientific+goals 200        lib.rs:444
+[06/06/26 09:11:54] INFO     response: https://www.startpage.com/ 200                                                                                                                                                                 lib.rs:444
+[06/06/26 09:11:55] INFO     response: https://www.startpage.com/sp/search 200                                                                                                                                                        lib.rs:444
+                    INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:11:55] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[06/06/26 09:11:56] INFO     response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Origins%20Space%20Telescope%20primary%20mirror%20size%20and%20scientific%20goals 200                         lib.rs:444
+[06/06/26 09:11:57] INFO     response: https://grokipedia.com/api/typeahead?query=Origins+Space+Telescope+primary+mirror+size+and+scientific+goals&limit=1 200                                                                        lib.rs:444
+                    INFO     HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"                                                                                                                          _client.py:1025
+[06/06/26 09:11:58] INFO     response: https://search.brave.com/search?q=Origins+Space+Telescope+primary+mirror+size+and+scientific+goals&source=web 200                                                                              lib.rs:444
+                    INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:12:00] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://skyandtelescope.org/astronomy-news/2020-decadal-survey-future-astronomy/                     | ✓ | ⏱: 1.12s
+[SCRAPE].. ◆ https://skyandtelescope.org/astronomy-news/2020-decadal-survey-future-astronomy/                     | ✓ | ⏱: 0.00s
+[COMPLETE] ● https://skyandtelescope.org/astronomy-news/2020-decadal-survey-future-astronomy/                     | ✗ | ⏱: 1.13s
+[06/06/26 09:12:03] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://en.wikipedia.org/wiki/Habitable_Exoplanets_Observatory                                       | ✓ | ⏱: 1.38s
+[SCRAPE].. ◆ https://en.wikipedia.org/wiki/Habitable_Exoplanets_Observatory                                       | ✓ | ⏱: 0.08s
+[COMPLETE] ● https://en.wikipedia.org/wiki/Habitable_Exoplanets_Observatory                                       | ✓ | ⏱: 1.47s
+[06/06/26 09:12:08] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[06/06/26 09:12:12] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+                    INFO     response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=%22LUVOIR%22%20%22primary%20mirror%22%20size%20scientific%20goals 200                                        lib.rs:444
+[FETCH]... ↓ https://origins.ipac.caltech.edu/faqs                                                                | ✓ | ⏱: 3.98s
+[SCRAPE].. ◆ https://origins.ipac.caltech.edu/faqs                                                                | ✓ | ⏱: 0.00s
+[COMPLETE] ● https://origins.ipac.caltech.edu/faqs                                                                | ✓ | ⏱: 3.99s
+                    INFO     response: https://grokipedia.com/api/typeahead?query=%22LUVOIR%22+%22primary+mirror%22+size+scientific+goals&limit=1 200                                                                                 lib.rs:444
+[06/06/26 09:12:13] INFO     response: https://search.brave.com/search?q=%22LUVOIR%22+%22primary+mirror%22+size+scientific+goals&source=web 200                                                                                       lib.rs:444
+[n:2] researcher         complete (45.3s)
+[n:3] researcher         complete (36.9s)
+[n:4] researcher         complete (41.3s)
+[n:5] formatter          complete (4.5s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: The following next-generation space telescope concepts represent significant advancements in our ability to observe the cosmos. Below is a comparison of their primary mirror sizes and core scientific objectives:
+
+1. LUVOIR (Large Ultraviolet Optical Infrared Surveyor)
+   - Primary Mirror Size: Two concepts were explored: 15 meters (LUVOIR-A) and 8 meters (LUVOIR-B).
+   - Scientific Goals: Focused on the search for and characterization of habitable exoplanets and biosignatures. It is also designed for broad astrophysical studies, including galaxy evolution, stellar life cycles, and mapping the
+══════════════════════════════════════════════════════════════════════════════
+
+
+Press enter to return to the Session 7 submenu...
+
+
+═════════════════════════════════════════════════════════════════
+                 Session 7 Core Showcase Examples
+═════════════════════════════════════════════════════════════════
+Select a Session 7 example to run under the S8 orchestrator:
+
+  1) SpaceX Mars Starship Launch Simulation
+     ↳ Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, sea...
+     ↳ Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+  2) Space Telescopes comparison (2030s plans)
+     ↳ Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, ...
+     ↳ Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+  3) Voyager 1 biography & distance
+     ↳ Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its lau...
+     ↳ Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+  4) ResNet Technique (Shortcut mapping)
+     ↳ Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradie...
+     ↳ Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+  5) DPO Reward Alignment (Implicit reward)
+     ↳ Query: How can language models be aligned with human feedback using implicit reward equations and binary co...
+     ↳ Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+
+  B) Quit
+
+Choice: 3
+
+═════════════════════════════════════════════════════════════════
+                  Voyager 1 biography & distance
+═════════════════════════════════════════════════════════════════
+Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its launch date, its current estimated distance from Earth (in AU or km), and describe the three key components of the Golden Record carried on board.
+
+Executing: uv run python flow.py "Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its launch date, its current estimated distance from Earth (in AU or km), and describe the three key components of the Golden Record carried on board."
+
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-00b3678b  ─  query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its launch date, its current estimated distance from Earth (in AU or km), and describe the three key components of the Golden Record carried on board.
+══════════════════════════════════════════════════════════════════════════════
+[memory.read] 1 hit(s) visible to every skill this run
+[n:1] planner            complete (3.7s)
+[06/06/26 09:12:45] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 1.47s
+[SCRAPE].. ◆ https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 0.18s
+[COMPLETE] ● https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 1.66s
+[06/06/26 09:12:47] INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:12:49] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 1.43s
+[SCRAPE].. ◆ https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 0.17s
+[COMPLETE] ● https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 1.61s
+[06/06/26 09:12:53] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[06/06/26 09:12:54] INFO     response: https://grokipedia.com/api/typeahead?query=Voyager+1+launch+date+current+distance+from+Earth+Golden+Record+components&limit=1 200                                                              lib.rs:444
+                    INFO     response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=Voyager%201%20launch%20date%20current%20distance%20from%20Earth%20Golden%20Record%20components 200           lib.rs:444
+                    INFO     response: https://www.startpage.com/ 200                                                                                                                                                                 lib.rs:444
+[06/06/26 09:12:55] INFO     response: https://www.startpage.com/sp/search 200                                                                                                                                                        lib.rs:444
+[06/06/26 09:12:57] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 1.44s
+[SCRAPE].. ◆ https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 0.18s
+[COMPLETE] ● https://en.wikipedia.org/wiki/Voyager_1                                                              | ✓ | ⏱: 1.63s
+[n:2] researcher         complete (21.0s)
+[n:3] formatter          complete (3.2s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: Voyager 1 was launched on September 5, 1977. As of early 2026, it is estimated to be over 24 billion kilometers (more than 15 billion miles) from Earth. The Voyager Golden Record carried on board consists of three primary components:
+
+1. Audio: A collection of natural sounds, greetings in numerous languages, and a diverse selection of music.
+2. Images: Encoded diagrams and pictures illustrating Earth, human biology, and our location in the universe.
+3. Technical Data: Information on how to play the record and details regarding the spacecraft's origin.
+══════════════════════════════════════════════════════════════════════════════
+
+
+Press enter to return to the Session 7 submenu...
+
+
+═════════════════════════════════════════════════════════════════
+                 Session 7 Core Showcase Examples
+═════════════════════════════════════════════════════════════════
+Select a Session 7 example to run under the S8 orchestrator:
+
+  1) SpaceX Mars Starship Launch Simulation
+     ↳ Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, sea...
+     ↳ Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+  2) Space Telescopes comparison (2030s plans)
+     ↳ Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, ...
+     ↳ Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+  3) Voyager 1 biography & distance
+     ↳ Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its lau...
+     ↳ Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+  4) ResNet Technique (Shortcut mapping)
+     ↳ Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradie...
+     ↳ Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+  5) DPO Reward Alignment (Implicit reward)
+     ↳ Query: How can language models be aligned with human feedback using implicit reward equations and binary co...
+     ↳ Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+
+  B) Quit
+
+Choice: 4
+
+═════════════════════════════════════════════════════════════════
+               ResNet Technique (Shortcut mapping)
+═════════════════════════════════════════════════════════════════
+Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradient problems without using the words ResNet or residual.
+
+Executing: uv run python flow.py "Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradient problems without using the words ResNet or residual."
+
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-67fe8c22  ─  query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradient problems without using the words ResNet or residual.
+══════════════════════════════════════════════════════════════════════════════
+[memory.read] 2 hit(s) visible to every skill this run
+[n:1] planner            complete (4.0s)
+[06/06/26 09:13:21] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+                    INFO     response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=deep%20learning%20shortcut%20connections%20bypass%20layers%20vanishing%20gradient 200                        lib.rs:444
+[06/06/26 09:13:22] INFO     response: https://grokipedia.com/api/typeahead?query=deep+learning+shortcut+connections+bypass+layers+vanishing+gradient&limit=1 200                                                                     lib.rs:444
+                    INFO     response: https://search.yahoo.com/search;_ylt=TDkRolqN-ayt7UYSox_YHwvp;_ylu=2Yb9nP1Kef78RIL427TPSe6TKAPKZq6-V0eFX19LdyE9zW8?p=deep+learning+shortcut+connections+bypass+layers+vanishing+gradient 200   lib.rs:444
+[06/06/26 09:13:23] INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[06/06/26 09:13:25] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+[INIT].... → Crawl4AI 0.8.6
+[FETCH]... ↓ https://www.geeksforgeeks.org/deep-learning/residual-networks-resnet-deep-learning/                  | ✓ | ⏱: 1.62s
+[SCRAPE].. ◆ https://www.geeksforgeeks.org/deep-learning/residual-networks-resnet-deep-learning/                  | ✓ | ⏱: 0.04s
+[COMPLETE] ● https://www.geeksforgeeks.org/deep-learning/residual-networks-resnet-deep-learning/                  | ✓ | ⏱: 1.67s
+[n:2] researcher         complete (12.6s)
+[n:3] formatter          complete (3.5s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: To address the challenge of vanishing or exploding gradients in very deep neural architectures, researchers employ a technique involving 'skip' or 'shortcut' connections. These connections create a direct path for information to flow across layers, effectively allowing the network to learn the difference between the input and output rather than the full transformation at every stage. By adding the input of a layer to its output, the model creates a 'highway' that ensures gradients can propagate effectively during training. This prevents the degradation of performance as depth increases, allowi
+══════════════════════════════════════════════════════════════════════════════
+
+
+Press enter to return to the Session 7 submenu...
+
+
+═════════════════════════════════════════════════════════════════
+                 Session 7 Core Showcase Examples
+═════════════════════════════════════════════════════════════════
+Select a Session 7 example to run under the S8 orchestrator:
+
+  1) SpaceX Mars Starship Launch Simulation
+     ↳ Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, sea...
+     ↳ Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+  2) Space Telescopes comparison (2030s plans)
+     ↳ Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, ...
+     ↳ Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+  3) Voyager 1 biography & distance
+     ↳ Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its lau...
+     ↳ Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+  4) ResNet Technique (Shortcut mapping)
+     ↳ Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradie...
+     ↳ Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+  5) DPO Reward Alignment (Implicit reward)
+     ↳ Query: How can language models be aligned with human feedback using implicit reward equations and binary co...
+     ↳ Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+
+  B) Quit
+
+Choice: 5
+
+═════════════════════════════════════════════════════════════════
+              DPO Reward Alignment (Implicit reward)
+═════════════════════════════════════════════════════════════════
+Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+Query: How can language models be aligned with human feedback using implicit reward equations and binary comparisons instead of reinforcement learning actor-critic policies, without using the words DPO or preference optimization?
+
+Executing: uv run python flow.py "How can language models be aligned with human feedback using implicit reward equations and binary comparisons instead of reinforcement learning actor-critic policies, without using the words DPO or preference optimization?"
+
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-44cc1fa4  ─  query: How can language models be aligned with human feedback using implicit reward equations and binary comparisons instead of reinforcement learning actor-critic policies, without using the words DPO or preference optimization?
+══════════════════════════════════════════════════════════════════════════════
+[memory.read] 3 hit(s) visible to every skill this run
+[n:1] planner            complete (4.1s)
+[06/06/26 09:14:22] INFO     Processing request of type CallToolRequest                                                                                                                                                            server.py:727
+                    INFO     HTTP Request: GET http://localhost:8108/v1/routers "HTTP/1.1 200 OK"                                                                                                                                _client.py:1025
+[06/06/26 09:14:23] INFO     HTTP Request: POST http://localhost:8108/v1/embed "HTTP/1.1 200 OK"                                                                                                                                 _client.py:1025
+                    INFO     Processing request of type ListToolsRequest                                                                                                                                                           server.py:727
+[n:2] retriever          complete (8.6s)
+[n:3] formatter          complete (1.1s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: I am sorry, but I could not find any information in the available knowledge base regarding the alignment of language models using implicit reward equations and binary comparisons while avoiding the specific terminology you excluded.
+══════════════════════════════════════════════════════════════════════════════
+
+
+Press enter to return to the Session 7 submenu...
+
+
+═════════════════════════════════════════════════════════════════
+                 Session 7 Core Showcase Examples
+═════════════════════════════════════════════════════════════════
+Select a Session 7 example to run under the S8 orchestrator:
+
+  1) SpaceX Mars Starship Launch Simulation
+     ↳ Query: Retrieve 3 primary mission objectives of SpaceX's planned Starship orbital test flights to Mars, sea...
+     ↳ Concept: Executes SpaceX objectives search and Boca Chica weather forecast in parallel (S8 concurrency), then synthesized by formatter.
+  2) Space Telescopes comparison (2030s plans)
+     ↳ Query: Search for next-generation space telescopes planned for launch in the 2030s (such as LUVOIR, HabEx, ...
+     ↳ Concept: Planner schedules parallel search queries for space telescopes, fetching and comparing them concurrently in S8.
+  3) Voyager 1 biography & distance
+     ↳ Query: Fetch the Wikipedia page for Voyager 1 (https://en.wikipedia.org/wiki/Voyager_1) and tell me its lau...
+     ↳ Concept: Deep retrieval flow using wikipedia URL parsing and summary synthesis.
+  4) ResNet Technique (Shortcut mapping)
+     ↳ Query: Explain the technique that helps deep networks bypass layers using shortcut mapping to combat gradie...
+     ↳ Concept: Requires retrieval / web search synthesis on advanced neural network architectures under constraint validation.
+  5) DPO Reward Alignment (Implicit reward)
+     ↳ Query: How can language models be aligned with human feedback using implicit reward equations and binary co...
+     ↳ Concept: Requires searching literature for Direct Preference Optimization and describing it under strict vocabulary constraints.
+
+  B) Quit
+
+Choice:
