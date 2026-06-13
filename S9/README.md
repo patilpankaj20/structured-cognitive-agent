@@ -74,3 +74,7 @@ This generates the final [REPLAY_REPORT.md](file:///Users/pankaj/Documents/EAG/S
 ### Task 3: CNC/VMC Training Institutes in Bangalore (`s8-c28b134d`)
 *   **Goal**: Compare 5 CNC/VMC training institutes in Bangalore with contact info and fee structures.
 *   **Result**: Identified Rite CNC, CADPOINT, Mass Education Academy, Upskill Labs, and Techsys. Resolved contact details and fee structures (mostly available on request).
+
+### Task 4: AI Coding Tools Comparison (`s8-c2c6ea15`)
+*   **Goal**: Compare 5 AI coding tools (GitHub Copilot, Cursor AI, Tabnine, Sourcegraph Cody, Supermaven) by free plan features, paid plan pricing, and key features.
+*   **Result**: Completed successfully, extracting detailed features and plan configurations into a structured comparison table.
