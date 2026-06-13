@@ -13,13 +13,13 @@
 #   normal failover ladder. The pin is a preference, not a hard binding.
 # - Add a `tag: provider` line to introduce a new pin. No code change.
 
-planner: gemini
-researcher: gemini
-distiller: gemini
-summariser: gemini
-critic: groq
-formatter: gemini
+planner: nvidia
+researcher: nvidia
+distiller: nvidia
+summariser: nvidia
+critic: nvidia
+formatter: github
 retriever: github
 sandbox_executor: github
-coder: gemini
-browser: gemini
+coder: nvidia
+browser: nvidia

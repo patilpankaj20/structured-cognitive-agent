@@ -330,6 +330,8 @@ async def run_skill(skill: Skill, node_id: str, graph_nodes,
         sk = BrowserSkill(
             artifacts_root=str(ROOT / "state" / "sessions" / session_id / "browser"),
             session=session_id,
+            a11y_provider_pin=None,
+            vision_provider_pin=None,
         )
         result = await sk.run(node_spec)
         if not result.elapsed_s:

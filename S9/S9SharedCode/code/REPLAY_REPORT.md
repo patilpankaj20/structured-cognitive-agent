@@ -1,10 +1,10 @@
 # S9 Browser-Capable Agent Replay Report
-**Session ID**: `s8-c28b134d`
+**Session ID**: `s8-8dae9f17`
 
 ---
 
 ## 1. Original User Goal
-> Compare 5 CNC/VMC training institutes in Bangalore. For each, retrieve the institute name, location, courses offered, contact details, and fee structure if available. Produce a structured comparison table.
+> Compare exactly 3 laptops under ₹80,000 using web search (researcher). For each of the three, retrieve the model name, price (which must be under ₹80,000), processor type, RAM, and a link. Produce a structured comparison table. Note: Do not use Amazon or Flipkart; instead search Croma, Reliance Digital, or official brand stores.
 
 ---
 
@@ -19,52 +19,77 @@ graph TD
     n:4["n:4 (formatter)"]
     n:5["n:5 (critic)"]
     n:6["n:6 (planner)"]
-    n:7["n:7 (browser)"]
-    n:8["n:8 (distiller)"]
-    n:9["n:9 (formatter)"]
-    n:10["n:10 (planner)"]
-    n:11["n:11 (researcher)"]
-    n:12["n:12 (researcher)"]
-    n:13["n:13 (researcher)"]
+    n:7["n:7 (researcher)"]
+    n:8["n:8 (researcher)"]
+    n:9["n:9 (researcher)"]
+    n:10["n:10 (distiller)"]
+    n:11["n:11 (formatter)"]
+    n:12["n:12 (critic)"]
+    n:13["n:13 (planner)"]
     n:14["n:14 (researcher)"]
-    n:15["n:15 (researcher)"]
+    n:15["n:15 (distiller)"]
     n:16["n:16 (formatter)"]
-    n:17["n:17 (planner)"]
-    n:18["n:18 (formatter)"]
+    n:17["n:17 (critic)"]
+    n:18["n:18 (planner)"]
+    n:19["n:19 (researcher)"]
+    n:20["n:20 (researcher)"]
+    n:21["n:21 (researcher)"]
+    n:22["n:22 (distiller)"]
+    n:23["n:23 (formatter)"]
+    n:24["n:24 (planner)"]
+    n:25["n:25 (formatter)"]
     n:2 --> n:3
     n:2 --> n:6
-    n:2 --> n:9
-    n:2 --> n:10
-    n:2 --> n:16
-    n:2 --> n:17
+    n:2 --> n:13
     n:2 --> n:18
+    n:2 --> n:24
     n:3 --> n:5
     n:3 --> n:6
-    n:3 --> n:9
-    n:3 --> n:10
-    n:3 --> n:16
-    n:3 --> n:17
+    n:3 --> n:13
     n:3 --> n:18
+    n:3 --> n:24
     n:5 --> n:4
-    n:6 --> n:7
-    n:7 --> n:8
-    n:8 --> n:9
-    n:10 --> n:11
+    n:7 --> n:10
+    n:7 --> n:13
+    n:7 --> n:18
+    n:7 --> n:24
+    n:7 --> n:25
+    n:8 --> n:10
+    n:8 --> n:13
+    n:8 --> n:18
+    n:8 --> n:24
+    n:9 --> n:10
+    n:9 --> n:13
+    n:9 --> n:18
+    n:9 --> n:24
     n:10 --> n:12
     n:10 --> n:13
-    n:10 --> n:14
-    n:10 --> n:15
-    n:11 --> n:16
-    n:11 --> n:17
-    n:11 --> n:18
-    n:12 --> n:16
-    n:12 --> n:17
-    n:12 --> n:18
-    n:13 --> n:16
-    n:13 --> n:17
-    n:13 --> n:18
+    n:10 --> n:18
+    n:10 --> n:24
+    n:10 --> n:25
+    n:12 --> n:11
+    n:13 --> n:14
+    n:14 --> n:15
     n:14 --> n:16
-    n:15 --> n:16
+    n:14 --> n:18
+    n:14 --> n:24
+    n:14 --> n:25
+    n:15 --> n:17
+    n:15 --> n:18
+    n:15 --> n:24
+    n:15 --> n:25
+    n:17 --> n:16
+    n:18 --> n:19
+    n:18 --> n:20
+    n:18 --> n:21
+    n:19 --> n:22
+    n:19 --> n:23
+    n:19 --> n:24
+    n:20 --> n:22
+    n:20 --> n:23
+    n:21 --> n:22
+    n:21 --> n:23
+    n:22 --> n:23
 ```
 
 ---
@@ -78,7 +103,7 @@ No browser executions occurred.
 
 ## 5. Page-State Logs
 The page-state details (including accessibility tree logs or coordinate annotations) are stored in the local session folders:
-- **Screenshots & Legends**: `state/sessions/s8-c28b134d/browser/`
+- **Screenshots & Legends**: `state/sessions/s8-8dae9f17/browser/`
 
 ---
 
@@ -87,29 +112,27 @@ The following data was extracted and structured by the `distiller` node:
 
 ```json
 {
-  "institutes": [
-    {
-      "name": "Rite CNC CAD & CAM Training Centre",
-      "location": "Bangalore"
-    },
-    {
-      "name": "CADPOINT Authorized Training Centre",
-      "location": "Bangalore"
-    },
-    {
-      "name": "Mass Education Academy",
-      "location": "Bangalore"
-    },
-    {
-      "name": "Upskill Labs",
-      "location": "Bangalore"
-    },
-    {
-      "name": "Techsys",
-      "location": "Bangalore"
-    }
-  ],
-  "courses": "CNC Machining, VMC programming, and CAD/CAM software (e.g., Mastercam)"
+  "laptop1": {
+    "model_name": "Asus Vivobook Go 15 E1504FA-BQ2490WS",
+    "price": "Not specified",
+    "processor_type": "AMD Ryzen 5",
+    "RAM": "16GB",
+    "link": "https://www.croma.com/computers-tablets/Laptops/c/20"
+  },
+  "laptop2": {
+    "model_name": "Apple MacBook Neo 13-inch A18 Pro",
+    "price": "Not specified",
+    "processor_type": "Not specified",
+    "RAM": "8GB",
+    "link": "https://www.croma.com/computers-tablets/Laptops/c/20"
+  },
+  "laptop3": {
+    "model_name": "Lenovo Ideapad Slim 3 15IRU8",
+    "price": "Not specified",
+    "processor_type": "Intel Core i3 13th Gen",
+    "RAM": "8GB",
+    "link": "https://www.croma.com/computers-tablets/Laptops/c/20"
+  }
 }
 ```
 
@@ -118,17 +141,17 @@ The following data was extracted and structured by the `distiller` node:
 ## 7. Final Comparison Table
 Here is the final output comparison table compiled by the `formatter` node:
 
-Here is a structured comparison of 5 CNC/VMC training institutes in Bangalore based on available information:
+Here is a structured comparison of three laptops under ₹80,000 available on Croma, based on the latest data:
 
-| Institute Name                  | Location               | Courses Offered                                   | Contact Details                 | Fee Structure                  |
-|--------------------------------|------------------------|-------------------------------------------------|--------------------------------|-------------------------------|
-| Rite CNC CAD & CAM Training Centre | Peenya Industrial Area, Bangalore | CNC Machining, VMC Programming, CAD/CAM (e.g., Mastercam) | No F11-F12, 1st Floor, B Block, Kushal Garden Arcade, near Systems Bus Stop, Peenya Industrial Area, Bangalore - 560058 | Not publicly listed; fees available on request via direct contact |
-| CADPOINT Authorized Training Centre | Bangalore (multiple centers) | CNC Machining, VMC Programming, CAD/CAM, other technical courses | Specific Bangalore contact details not consolidated publicly; generally requires direct inquiry | Not publicly available; fees vary per course and require direct inquiry |
-| Mass Education Academy          | Vijayanagar, Bangalore | CNC Machining, CAD/CAM, Solidworks, Catia, Revit, Tally, GST, SAP, HR Management, and other software courses | Phone: 9611334798               | Not publicly available; contact academy for details |
-| Upskill Labs                   | Bangalore              | CNC Machining, VMC Programming, CAD/CAM software training | Contact details not publicly available | Fee details not publicly available; direct contact recommended |
-| Techsys                       | Bangalore              | CNC Machining, VMC Programming, CAD/CAM software training | Contact details not publicly available | Fee details not publicly available; direct contact recommended |
+| Model Name                      | Price    | Processor Type         | RAM   | Link                                                                 |
+|--------------------------------|----------|-----------------------|-------|----------------------------------------------------------------------|
+| ASUS TUF FA506NCG-HN200WS      | ₹71,990  | AMD Ryzen 7           | 16GB  | https://www.croma.com/computers-tablets/laptops/c/20                 |
+| Lenovo LOQ 15IAX9               | ₹79,990  | Intel Core i5 12th Gen| 16GB  | https://www.croma.com/computers-tablets/laptops/c/20                 |
+| ASUS TUF A15 FA506NCG-HN251WS  | ₹78,990  | AMD Ryzen 7           | 16GB  | https://www.croma.com/computers-tablets/laptops/c/20                 |
 
-Summary: All five institutes offer CNC and VMC programming training along with CAD/CAM software courses such as Mastercam. Detailed fee structures and direct contact information are mostly not publicly disclosed and require contacting the institutes directly for accurate and current information.
+All three are gaming-capable laptops with 16GB RAM and SSD storage, priced under ₹80,000 on Croma's official website.
+
+Note: Another set of laptops found at Croma includes Asus Vivobook Go 15 (AMD Ryzen 5, 16GB RAM), Apple MacBook Neo 13-inch (8GB RAM), and Lenovo Ideapad Slim 3 (Intel Core i3 13th Gen, 8GB RAM), but their exact prices were not specified and may vary.
 
 ---
 
@@ -140,27 +163,27 @@ Below is the cost ledger breakdown retrieved directly from the LLM Gateway V9 pr
   "critic": [
     {
       "agent": "critic",
-      "provider": "groq",
-      "calls": 1,
-      "in_tok": 1307,
-      "out_tok": 40,
-      "total_latency_ms": 315,
+      "provider": "nvidia",
+      "calls": 3,
+      "in_tok": 4663,
+      "out_tok": 126,
+      "total_latency_ms": 7647,
       "total_retries": 0,
-      "ok": 1,
+      "ok": 3,
       "errors": 0,
-      "dollars": 0.000226
+      "dollars": 0.0
     }
   ],
   "distiller": [
     {
       "agent": "distiller",
-      "provider": "gemini",
-      "calls": 1,
-      "in_tok": 1528,
-      "out_tok": 210,
-      "total_latency_ms": 1367,
+      "provider": "nvidia",
+      "calls": 3,
+      "in_tok": 5182,
+      "out_tok": 477,
+      "total_latency_ms": 39007,
       "total_retries": 0,
-      "ok": 1,
+      "ok": 3,
       "errors": 0,
       "dollars": 0.0
     }
@@ -168,51 +191,27 @@ Below is the cost ledger breakdown retrieved directly from the LLM Gateway V9 pr
   "formatter": [
     {
       "agent": "formatter",
-      "provider": "gemini",
-      "calls": 2,
-      "in_tok": 0,
-      "out_tok": 0,
-      "total_latency_ms": 656,
-      "total_retries": 0,
-      "ok": 0,
-      "errors": 2,
-      "dollars": 0.0
-    },
-    {
-      "agent": "formatter",
       "provider": "github",
-      "calls": 2,
-      "in_tok": 4226,
-      "out_tok": 801,
-      "total_latency_ms": 13850,
+      "calls": 1,
+      "in_tok": 2916,
+      "out_tok": 325,
+      "total_latency_ms": 18938,
       "total_retries": 0,
-      "ok": 2,
+      "ok": 1,
       "errors": 0,
       "dollars": 0.0
-    },
-    {
-      "agent": "formatter",
-      "provider": "groq",
-      "calls": 3,
-      "in_tok": 6221,
-      "out_tok": 1070,
-      "total_latency_ms": 3022,
-      "total_retries": 0,
-      "ok": 3,
-      "errors": 0,
-      "dollars": 0.001736
     }
   ],
   "planner": [
     {
       "agent": "planner",
-      "provider": "gemini",
-      "calls": 4,
-      "in_tok": 14675,
-      "out_tok": 1179,
-      "total_latency_ms": 6846,
+      "provider": "nvidia",
+      "calls": 5,
+      "in_tok": 19640,
+      "out_tok": 1073,
+      "total_latency_ms": 124021,
       "total_retries": 0,
-      "ok": 4,
+      "ok": 5,
       "errors": 0,
       "dollars": 0.0
     }
@@ -220,13 +219,13 @@ Below is the cost ledger breakdown retrieved directly from the LLM Gateway V9 pr
   "researcher": [
     {
       "agent": "researcher",
-      "provider": "gemini",
-      "calls": 17,
-      "in_tok": 41116,
-      "out_tok": 1779,
-      "total_latency_ms": 18579,
+      "provider": "nvidia",
+      "calls": 46,
+      "in_tok": 268764,
+      "out_tok": 2974,
+      "total_latency_ms": 374220,
       "total_retries": 0,
-      "ok": 17,
+      "ok": 46,
       "errors": 0,
       "dollars": 0.0
     }

@@ -70,6 +70,13 @@ def plan_recovery(
       reason=upstream_failure, failed=other     → replan
     """
     reason = classify_failure(error_text)
+    if failed_skill == "browser":
+        fr = f"node={failed_node_id} skill={failed_skill} reason={reason} error={error_text}"
+        return RecoveryDecision(
+            action="replan", reason="upstream_failure",
+            note="browser skill failed; queueing planner recovery to fallback to search",
+            failure_report=fr,
+        )
     if reason == "transient":
         return RecoveryDecision(
             action="skip", reason=reason,

@@ -369,11 +369,16 @@ async def chat(req: ChatRequest):
     # pin a provider explicitly, apply agent_routing.yaml's preferred provider.
     # This mutates req.provider so the rest of the function (router-pick,
     # candidate-narrowing, single-candidate-wait) sees the pin.
+    # V9: only apply the pin if the pinned provider supports all required capabilities (e.g. vision).
     if req.agent and not req.provider:
         pinned = AGENT_ROUTING.get(req.agent)
         if pinned and pinned in router.providers:
-            req.provider = pinned
-            explicit_override = True
+            p = router.providers[pinned]
+            caps = dict(getattr(p, "capabilities", {}))
+            caps = P.model_capabilities(pinned, p.model, caps)
+            if all(caps.get(cap) for cap in required_caps):
+                req.provider = pinned
+                explicit_override = True
 
     # V8: retry-on-5xx with `retries` surfaced in the response. The
     # per-provider failover loop below already rotates providers on
